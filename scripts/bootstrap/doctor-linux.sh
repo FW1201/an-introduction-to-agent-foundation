@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -u
+
+echo "Agent Foundation bootstrap check (Linux)"
+for manager in apt-get dnf pacman; do
+  command -v "$manager" >/dev/null 2>&1 && echo "✓ package manager: $manager"
+done
+for tool in git node npm npx gh officecli python3; do
+  if command -v "$tool" >/dev/null 2>&1; then
+    printf '✓ %s: ' "$tool"
+    "$tool" --version 2>/dev/null | head -n 1 || true
+  else
+    printf '○ %s: not found\n' "$tool"
+  fi
+done
+echo "Do not install anything until the user confirms the official installation path."

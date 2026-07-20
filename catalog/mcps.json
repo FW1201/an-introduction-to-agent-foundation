@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "default_mode": "read-only-or-no-install",
+    "filesystem_allowed_root": "workspace-only",
+    "external_write_requires_confirmation": true
+  },
+  "mcps": [
+    {
+      "id": "filesystem",
+      "stage": 1,
+      "purpose": "讓未內建檔案能力的 Agent 在限定專案根目錄內讀寫與搜尋。",
+      "source": "@modelcontextprotocol/server-filesystem",
+      "requires": ["node", "npx"],
+      "access": "workspace only",
+      "verification": "Run MCP initialize and list/read one file in the workspace; do not write during first verification.",
+      "rollback": "Remove the provider MCP block and restart the Agent."
+    },
+    {
+      "id": "github",
+      "stage": 2,
+      "purpose": "在使用者確認後建立 repository、推送成果與查看 deployment 狀態。",
+      "source": "provider official GitHub connector or gh CLI fallback",
+      "requires": ["git", "gh"],
+      "access": "repository-scoped",
+      "verification": "Check gh auth status, then run a read-only repository query before any write.",
+      "rollback": "Disconnect the connector or run gh auth logout only after user confirmation."
+    },
+    {
+      "id": "browser-readonly",
+      "stage": 3,
+      "purpose": "閱讀公開資料、測試本機網站或驗收 GitHub Pages。",
+      "source": "provider-supported browser or web MCP",
+      "requires": [],
+      "access": "read-only by default",
+      "verification": "Open a public URL or local preview and capture the visible result.",
+      "rollback": "Remove the connector configuration."
+    }
+  ]
+}

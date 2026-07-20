@@ -1,0 +1,20 @@
+name: Education workflow feedback
+description: Suggest an improvement to a role card, source template, quality gate, or example case.
+title: "[workflow]: "
+labels: [workflow]
+body:
+  - type: dropdown
+    attributes:
+      label: Role
+      options:
+        - Teaching
+        - Homeroom
+        - Administration
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Situation and desired improvement
+      description: Do not include identifiable student or family information.
+    validations:
+      required: true

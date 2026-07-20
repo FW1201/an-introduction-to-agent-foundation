@@ -1,0 +1,21 @@
+name: Environment or installation issue
+description: Report a reproducible environment, MCP, Skill, or OfficeCLI setup problem.
+title: "[setup]: "
+labels: [setup]
+body:
+  - type: textarea
+    attributes:
+      label: Doctor result
+      description: Paste the sanitized output of `node scripts/doctor.mjs --json`. Never include tokens or student data.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Step and expected result
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Actual result
+    validations:
+      required: true

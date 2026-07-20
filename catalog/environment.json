@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "install_requires_confirmation": true,
+    "github_auth_stage": "repository-or-deployment",
+    "secrets_in_chat": false
+  },
+  "tools": [
+    {
+      "id": "git",
+      "required": true,
+      "detect": ["git", "--version"],
+      "verify": ["git", "--version"],
+      "purpose": "版本控制、保留成果與發布前的可追溯紀錄。"
+    },
+    {
+      "id": "node",
+      "required": true,
+      "minimum_version": 18,
+      "detect": ["node", "--version"],
+      "verify": ["node", "--version"],
+      "purpose": "執行 npm、npx、診斷腳本與部分 MCP。"
+    },
+    {
+      "id": "npm",
+      "required": true,
+      "detect": ["npm", "--version"],
+      "verify": ["npm", "--version"],
+      "purpose": "安裝 Node 生態的工具與選用文件工具。"
+    },
+    {
+      "id": "npx",
+      "required": true,
+      "detect": ["npx", "--version"],
+      "verify": ["npx", "--version"],
+      "purpose": "啟動不需全域安裝的 MCP 或工具。"
+    },
+    {
+      "id": "gh",
+      "required": false,
+      "detect": ["gh", "--version"],
+      "verify": ["gh", "auth", "status"],
+      "purpose": "建立 GitHub repository、推送與 GitHub Pages 部署；在發布階段才登入。"
+    },
+    {
+      "id": "officecli",
+      "required": false,
+      "detect": ["officecli", "--version"],
+      "verify": ["officecli", "--version"],
+      "purpose": "建立與預覽 DOCX、PPTX、XLSX 等 Office 文件。"
+    },
+    {
+      "id": "python3",
+      "required": false,
+      "detect": ["python3", "--version"],
+      "verify": ["python3", "--version"],
+      "purpose": "部分學習單與教育 Skill 的選用腳本。"
+    }
+  ],
+  "package_managers": {
+    "darwin": ["brew"],
+    "win32": ["winget"],
+    "linux": ["apt-get", "dnf", "pacman"]
+  }
+}

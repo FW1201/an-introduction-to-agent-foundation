@@ -1,0 +1,13 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.token
+.agent-foundation/backups/
+templates/wiki-project/raw/private/
+raw/private/
+logs/private/

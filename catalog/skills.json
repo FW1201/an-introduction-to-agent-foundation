@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "source_policy": {
+    "trusted_sources": ["FW1201/tw-edu-skills", "anthropics/skills", "iOfficeAI/OfficeCLI"],
+    "pin_before_install": true,
+    "install_requires_confirmation": true
+  },
+  "skill_sets": [
+    {
+      "id": "teaching-foundation",
+      "label": "教學設計入門包",
+      "skills": ["tw-edu-lesson-plan-108", "tw-edu-slides-creator", "tw-edu-exam-generator", "tw-edu-worksheet-creator", "tw-edu-rubric-designer", "tw-edu-mini-app"]
+    },
+    {
+      "id": "homeroom-foundation",
+      "label": "導師／親師溝通進階包",
+      "skills": ["tw-edu-classroom-culture", "tw-edu-parent-communication"]
+    },
+    {
+      "id": "administration-foundation",
+      "label": "行政文件進階包",
+      "skills": ["tw-edu-school-document", "tw-edu-meeting-facilitator"]
+    }
+  ],
+  "skills": [
+    {"id":"tw-edu-lesson-plan-108","role":"teaching","purpose":"依臺灣 108 課綱設計教案。","source":"FW1201/tw-edu-skills","requires":[],"minimum_verification":"Create a lesson outline from an approved brief."},
+    {"id":"tw-edu-slides-creator","role":"teaching","purpose":"把教學結構轉為可審閱的投影片規格。","source":"FW1201/tw-edu-skills","requires":["node"],"recommended":["officecli"],"minimum_verification":"Create a 3-slide outline and render at least one slide when OfficeCLI is installed."},
+    {"id":"tw-edu-exam-generator","role":"teaching","purpose":"依學習目標建立素養導向命題。","source":"FW1201/tw-edu-skills","requires":[],"minimum_verification":"Produce a blueprint, questions, answers, and explanations."},
+    {"id":"tw-edu-worksheet-creator","role":"teaching","purpose":"建立可列印或數位使用的學習單。","source":"FW1201/tw-edu-skills","requires":[],"recommended":["python3"],"minimum_verification":"Create a one-page worksheet draft."},
+    {"id":"tw-edu-rubric-designer","role":"teaching","purpose":"建立可觀察、可評量的規準。","source":"FW1201/tw-edu-skills","requires":[],"minimum_verification":"Create a rubric with levels and observable descriptors."},
+    {"id":"tw-edu-mini-app","role":"teaching","purpose":"開發小型互動教學工具並可發布。","source":"FW1201/tw-edu-skills","requires":["node","git"],"recommended":["gh"],"minimum_verification":"Create a static local app and pass a browser preview."},
+    {"id":"tw-edu-classroom-culture","role":"homeroom","purpose":"建立正向班級經營與班級文化材料。","source":"FW1201/tw-edu-skills","requires":[],"minimum_verification":"Create a de-identified class agreement draft."},
+    {"id":"tw-edu-parent-communication","role":"homeroom","purpose":"產生親師溝通草稿。","source":"FW1201/tw-edu-skills","requires":[],"minimum_verification":"Create a teacher-reviewed draft; never send automatically."},
+    {"id":"tw-edu-school-document","role":"administration","purpose":"建立校務行政文件。","source":"FW1201/tw-edu-skills","requires":[],"minimum_verification":"Create a document outline against an approved template."},
+    {"id":"tw-edu-meeting-facilitator","role":"administration","purpose":"建立會議議程、紀錄與行動項目。","source":"FW1201/tw-edu-skills","requires":[],"minimum_verification":"Create an agenda and action tracker; do not create calendar events automatically."}
+  ],
+  "claude_code_optional_plugins": [
+    {
+      "id": "anthropic-document-skills",
+      "source": "anthropics/skills",
+      "install": ["/plugin marketplace add anthropics/skills", "/plugin install document-skills@anthropic-agent-skills"],
+      "purpose": "補足 PPTX、DOCX、PDF、XLSX 文件格式與編輯規則。",
+      "verification": "Create a minimal document through a selected document workflow, then inspect the output.",
+      "scope": "Claude Code only; do not claim it is installed for other providers."
+    }
+  ],
+  "officecli": {
+    "source": "iOfficeAI/OfficeCLI",
+    "purpose": "產製與渲染 Office 文件，讓 Agent 能做視覺 QA。",
+    "requires_confirmation": true,
+    "verification": ["officecli --version", "create a minimal document", "render a preview", "record QA in wiki"]
+  }
+}

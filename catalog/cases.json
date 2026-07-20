@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "teaching-slides",
+      "role": "teaching",
+      "title": "教學簡報",
+      "requires": ["wiki", "tw-edu-slides-creator"],
+      "recommended": ["officecli", "anthropic-document-skills"],
+      "quality_gates": ["學習目標已確認", "大綱已確認", "至少一張渲染預覽已檢查", "教師確認輸出"],
+      "outputs": ["PPTX", "PDF", "wiki project record"]
+    },
+    {
+      "id": "assessment-pack",
+      "role": "teaching",
+      "title": "測驗與學習單",
+      "requires": ["wiki", "tw-edu-exam-generator"],
+      "recommended": ["tw-edu-worksheet-creator", "tw-edu-rubric-designer"],
+      "quality_gates": ["命題藍圖已確認", "答案與配分一致", "教師版與學生版已分離"],
+      "outputs": ["student version", "teacher version", "rubric", "wiki project record"]
+    },
+    {
+      "id": "homeroom-draft",
+      "role": "homeroom",
+      "title": "親師溝通或班級經營草稿",
+      "requires": ["wiki", "tw-edu-parent-communication or tw-edu-classroom-culture"],
+      "quality_gates": ["資料已去識別", "語氣與校內規範已檢查", "教師審閱", "未自動傳送"],
+      "outputs": ["draft only", "wiki project record"]
+    },
+    {
+      "id": "administration-meeting",
+      "role": "administration",
+      "title": "行政會議文件",
+      "requires": ["wiki", "tw-edu-meeting-facilitator or tw-edu-school-document"],
+      "quality_gates": ["校本範本已核對", "行動項目有負責人與期限欄位", "行政確認", "未自動寄送或建行事曆"],
+      "outputs": ["agenda or document draft", "wiki project record"]
+    },
+    {
+      "id": "mini-app-pages",
+      "role": "teaching",
+      "title": "迷你教學工具與 GitHub Pages",
+      "requires": ["wiki", "tw-edu-mini-app", "git", "gh"],
+      "quality_gates": ["本機預覽通過", "使用者確認公開內容", "GitHub Actions 綠燈", "Pages URL 可讀"],
+      "outputs": ["source code", "GitHub Pages URL", "wiki project record"]
+    }
+  ]
+}

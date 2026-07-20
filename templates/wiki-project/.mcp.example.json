@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${workspaceFolder}"],
+      "notes": "Replace ${workspaceFolder} through the provider's supported workspace variable or a verified absolute project path. Never grant a home directory or disk root."
+    }
+  }
+}

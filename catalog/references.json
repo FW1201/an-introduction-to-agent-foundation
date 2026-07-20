@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "privacy_default": "public, licensed, or de-identified only",
+  "roles": {
+    "teaching": {
+      "minimum": ["教學主題", "年級或學習者", "課程時數", "學習目標"],
+      "recommended": ["教材或課文", "課綱對應", "既有簡報或校本範本", "評量規準", "學生常見迷思"]
+    },
+    "homeroom": {
+      "minimum": ["去識別班級情境", "溝通目的", "收件者類型"],
+      "recommended": ["班級規範", "校內通知範本", "親師溝通語氣規範", "可公開的活動資料"]
+    },
+    "administration": {
+      "minimum": ["文件目的", "讀者或收件對象", "完成期限"],
+      "recommended": ["學校公版", "流程規定", "既有會議記錄", "活動資料", "必要欄位與核章規範"]
+    }
+  },
+  "source_record_fields": ["title", "path_or_url", "owner_or_license", "purpose", "public_status", "deidentification_status", "teacher_approved"]
+}

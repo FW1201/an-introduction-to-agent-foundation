@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "providers": [
+    {
+      "id": "codex",
+      "display_name": "Codex",
+      "config_format": "TOML",
+      "mcp_scope": ["user", "project-when-supported"],
+      "skill_scope": ["user", "project-when-supported"],
+      "verification": "Restart or reload the Agent, then verify the declared MCP or Skill is discoverable.",
+      "notes": "Do not create a new canonical skill directory inside this template; use the provider's supported location."
+    },
+    {
+      "id": "claude-code",
+      "display_name": "Claude Code",
+      "config_format": "provider-managed",
+      "mcp_scope": ["user", "project"],
+      "skill_scope": ["user", "project", "plugin"],
+      "verification": "Reload Claude Code and run the Skill's minimum verification case.",
+      "anthropic_document_skills": true
+    },
+    {
+      "id": "opencode",
+      "display_name": "OpenCode",
+      "config_format": "JSON",
+      "mcp_scope": ["user", "project"],
+      "skill_scope": ["provider-dependent"],
+      "verification": "Restart OpenCode and run the MCP initialize or minimum Skill case."
+    },
+    {
+      "id": "antigravity",
+      "display_name": "Antigravity",
+      "config_format": "provider-managed JSON",
+      "mcp_scope": ["user", "project-when-supported"],
+      "skill_scope": ["provider-dependent"],
+      "verification": "Use the MCP Server Hub or provider settings, then run a non-destructive tool call.",
+      "notes": "The first release supplies guided manual configuration rather than claiming unattended installation."
+    }
+  ]
+}
