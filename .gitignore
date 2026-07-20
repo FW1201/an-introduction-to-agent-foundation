@@ -8,6 +8,7 @@ node_modules/
 *.p12
 *.token
 .agent-foundation/backups/
+google-workspace-mcp.local.json
 templates/wiki-project/raw/private/
 raw/private/
 logs/private/

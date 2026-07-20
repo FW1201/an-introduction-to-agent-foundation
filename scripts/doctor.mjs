@@ -33,6 +33,7 @@ const tools = [
   ["npm", ["--version"]],
   ["npx", ["--version"]],
   ["gh", ["--version"]],
+  ["gcloud", ["--version"]],
   ["officecli", ["--version"]],
   ["python3", ["--version"]]
 ].map(([command, commandArgs]) => probe(command, commandArgs));

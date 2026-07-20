@@ -8,7 +8,7 @@
       "mcp_scope": ["user", "project-when-supported"],
       "skill_scope": ["user", "project-when-supported"],
       "verification": "Restart or reload the Agent, then verify the declared MCP or Skill is discoverable.",
-      "notes": "Do not create a new canonical skill directory inside this template; use the provider's supported location."
+      "notes": "Do not create a new canonical skill directory inside this template; use the provider's supported location. Add Google Workspace remote MCP only when this Codex client version supports HTTP OAuth MCP and the configuration has been verified."
     },
     {
       "id": "claude-code",
@@ -17,7 +17,8 @@
       "mcp_scope": ["user", "project"],
       "skill_scope": ["user", "project", "plugin"],
       "verification": "Reload Claude Code and run the Skill's minimum verification case.",
-      "anthropic_document_skills": true
+      "anthropic_document_skills": true,
+      "notes": "Google Workspace remote MCP setup in the official guide targets Claude.ai or Claude Desktop connectors; do not assume it is automatically available in Claude Code."
     },
     {
       "id": "opencode",
@@ -34,7 +35,7 @@
       "mcp_scope": ["user", "project-when-supported"],
       "skill_scope": ["provider-dependent"],
       "verification": "Use the MCP Server Hub or provider settings, then run a non-destructive tool call.",
-      "notes": "The first release supplies guided manual configuration rather than claiming unattended installation."
+      "notes": "The first release supplies guided manual configuration rather than claiming unattended installation. Google Workspace remote MCP uses the provider's OAuth connector flow."
     }
   ]
 }

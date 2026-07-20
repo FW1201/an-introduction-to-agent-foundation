@@ -1,0 +1,18 @@
+{
+  "selectedProfile": "drive-readonly",
+  "mcpServers": {
+    "drive": {
+      "serverUrl": "https://drivemcp.googleapis.com/mcp/v1",
+      "transport": "http",
+      "oauth": {
+        "clientId": "SET_IN_PROVIDER_SECURE_UI",
+        "clientSecret": "DO_NOT_STORE_HERE"
+      }
+    }
+  },
+  "notes": [
+    "This is a documentation-only example. Copy the endpoint into your provider's secure connector UI.",
+    "Do not save a real client secret in this repository. Put any local provider configuration in ignored google-workspace-mcp.local.json.",
+    "Complete OAuth in the provider UI, then verify a read-only Drive action before enabling any write operation."
+  ]
+}

@@ -4,7 +4,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const catalogDir = path.join(root, "catalog");
-const required = ["AGENTS.md", "README.md", "WIKI.md", ".agent-foundation/progress.json", "wiki/index.md", "wiki/log.md", "catalog/environment.json", "catalog/providers.json", "catalog/mcps.json", "catalog/skills.json", "catalog/references.json", "catalog/cases.json", "agents/coordinator.md", "agents/teaching.md", "agents/homeroom.md", "agents/administration.md", "workflows/archive-output.md", "templates/wiki-project/.agent-foundation/progress.json", "templates/wiki-project/wiki/index.md", "templates/github-pages-app/index.html", ".github/workflows/validate.yml", ".github/workflows/pages.yml"];
+const required = ["AGENTS.md", "README.md", "WIKI.md", ".agent-foundation/progress.json", "wiki/index.md", "wiki/log.md", "catalog/environment.json", "catalog/providers.json", "catalog/mcps.json", "catalog/google-workspace-profiles.json", "catalog/skills.json", "catalog/references.json", "catalog/cases.json", "agents/coordinator.md", "agents/teaching.md", "agents/homeroom.md", "agents/administration.md", "workflows/archive-output.md", "templates/wiki-project/.agent-foundation/progress.json", "templates/wiki-project/wiki/index.md", "templates/wiki-project/google-workspace-mcp.example.json", "templates/github-pages-app/index.html", "scripts/google-workspace-mcp.mjs", "scripts/verify-google-workspace-mcp.mjs", ".github/workflows/validate.yml", ".github/workflows/pages.yml"];
 
 let failures = 0;
 for (const file of required) {

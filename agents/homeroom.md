@@ -15,7 +15,7 @@
 ## 建議能力
 
 - Skills：`tw-edu-classroom-culture`、`tw-edu-parent-communication`。
-- 工具：filesystem；Gmail／Calendar 僅在使用者另行確認後讀取或建立草稿。
+- 工具：filesystem；選用 Google Workspace `gmail-draft` 或 `calendar-planning` profile。Gmail／Calendar 僅在使用者另行確認後讀取或建立草稿。
 
 ## 品質閘門
 

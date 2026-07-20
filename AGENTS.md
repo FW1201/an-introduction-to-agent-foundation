@@ -16,6 +16,9 @@
 - 偵測到學生姓名、學號、成績、聯絡方式或可辨識影像時，停止匯入，請使用者先去識別或改用授權示範資料。
 - 先用 `scripts/doctor.mjs --json` 判斷環境；Node 不存在時使用對應 bootstrap 腳本的診斷結果。
 - MCP filesystem 僅可允許目前 workspace；不得加入家目錄、磁碟根目錄或雲端同步根目錄。
+- Google Workspace MCP 是選用遠端服務。先讓使用者選產品 profile，預設推薦 `drive-readonly`；未確認前不可啟用 Google Cloud API、MCP API、OAuth scopes 或寫入 provider 設定。
+- Google Workspace 的 OAuth client ID／secret 只能在 Google Cloud Console 與 provider 的安全設定介面輸入；不得要求使用者貼到聊天、Markdown、JSON、log 或 Git。
+- Gmail 僅能先驗證讀取與草稿；Calendar、Drive、Chat、People 的寫入、寄送、上傳、建立活動或 Chat 發文，都要在每次動作前再次確認。
 - Skills 與 MCP 必須各自完成實際驗證後，才能標記為可用。
 - 同一份文件只能指定一個產製主責：教育 Skill 決定內容，文件 Skill 決定檔案格式，OfficeCLI 用於產製與預覽。
 - 所有外部寫入都由你執行；角色卡是工作模式，不是可自主發送或發布的子代理。

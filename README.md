@@ -10,7 +10,7 @@
 
 1. 檢查 Git、Node.js、npm、npx、GitHub CLI 與目前 Agent 環境。
 2. 建立可被 Agent 讀取的 Wiki 專案結構。
-3. 只對目前專案授權的 filesystem MCP，並依需要加入 GitHub 或瀏覽器工具。
+3. 只對目前專案授權的 filesystem MCP，並依需要加入 GitHub、瀏覽器或 Google Workspace 工具。
 4. 安裝精選的 `tw-edu-skills`；Claude Code 使用者可選裝 Anthropic Document Skills。
 5. 選裝 OfficeCLI，建立「產製 → 預覽 → 修正」的 Office 文件流程。
 6. 用教學簡報、測驗／學習單、導師／行政文件或迷你教具完成第一個成果。
@@ -72,12 +72,40 @@ Template 根目錄已包含空白的 `raw/`、`wiki/`、`outputs/`、`logs/` 與
 
 同一份文件只能有一個「產製主責」。教育 Skill 先決定內容與教學規格；文件 Skill 處理格式；OfficeCLI 處理產製與預覽。
 
+## 選用：Google Workspace MCP
+
+Google Workspace 是一組**遠端** MCP，而不是單一套件。請先選需要的產品與最小權限：
+
+| Profile | 能力 | 預設風險 |
+| --- | --- | --- |
+| `drive-readonly` | 搜尋、讀取 Drive 檔案 | 讀取 Workspace 資料 |
+| `calendar-planning` | 讀取日曆與忙閒資訊 | 讀取行程資訊 |
+| `gmail-draft` | 搜尋信件、建立草稿 | 讀取郵件與建立草稿，不自動寄送 |
+| `people-readonly` | 讀取聯絡人／目錄資料 | 讀取聯絡人資料 |
+| `chat-readonly` | 讀取 Chat 空間與訊息 | 讀取工作通訊內容 |
+
+預設建議從 `drive-readonly` 開始。這項整合需要 Google Cloud 專案、`gcloud`、對應 API／MCP API、OAuth 2.0 client；OAuth client secret 只能在 Google Cloud 與 Agent provider 的安全設定介面處理，絕不能貼進聊天或 commit。
+
+```bash
+# 先檢視將啟用的 Google 服務與 OAuth scopes，不修改雲端設定
+node scripts/google-workspace-mcp.mjs --profile drive-readonly --project YOUR_PROJECT_ID
+
+# 使用者已確認後才啟用所需服務
+node scripts/google-workspace-mcp.mjs --profile drive-readonly --project YOUR_PROJECT_ID --apply --confirm ENABLE_GOOGLE_WORKSPACE_MCP
+
+# 檢查 profile 與設定範本一致
+node scripts/verify-google-workspace-mcp.mjs --profile drive-readonly --config templates/wiki-project/google-workspace-mcp.example.json
+```
+
+完整引導見 `workflows/install-mcp.md` 與 [Google Workspace 官方 MCP 指南](https://developers.google.com/workspace/guides/configure-mcp-servers?hl=zh-tw)。
+
 ## 驗證
 
 ```bash
 npm test
 node scripts/verify-mcp.mjs --config templates/wiki-project/.mcp.example.json --workspace "$PWD"
 node scripts/verify-skill.mjs --id tw-edu-exam-generator
+node scripts/verify-google-workspace-mcp.mjs --profile drive-readonly --config templates/wiki-project/google-workspace-mcp.example.json
 node scripts/verify-pages.mjs --workflow .github/workflows/pages.yml --site site
 ```
 
@@ -92,4 +120,5 @@ node scripts/verify-pages.mjs --workflow .github/workflows/pages.yml --site site
 - [Anthropic Skills](https://github.com/anthropics/skills)
 - [MCP filesystem server](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem)
 - [OfficeCLI](https://github.com/iOfficeAI/OfficeCLI)
+- [Google Workspace MCP 指南](https://developers.google.com/workspace/guides/configure-mcp-servers?hl=zh-tw)
 - [GitHub Pages Actions](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)

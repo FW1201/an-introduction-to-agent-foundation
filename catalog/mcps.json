@@ -35,6 +35,17 @@
       "access": "read-only by default",
       "verification": "Open a public URL or local preview and capture the visible result.",
       "rollback": "Remove the connector configuration."
+    },
+    {
+      "id": "google-workspace",
+      "stage": 3,
+      "purpose": "依使用者選擇連接 Gmail、Drive、Calendar、Chat 或 People 的官方遠端 MCP。",
+      "source": "Google Workspace remote MCP servers",
+      "requires": ["gcloud", "Google Cloud project", "OAuth 2.0 client"],
+      "access": "product-specific OAuth scopes; choose one least-privilege profile at a time",
+      "verification": "Complete provider OAuth in its secure UI, then make one profile-appropriate read-only call before enabling any write action.",
+      "rollback": "Remove the provider connector, revoke OAuth consent if required, and disable unused Google Cloud APIs after confirming no other workload needs them.",
+      "catalog": "catalog/google-workspace-profiles.json"
     }
   ]
 }

@@ -43,6 +43,13 @@
       "purpose": "建立 GitHub repository、推送與 GitHub Pages 部署；在發布階段才登入。"
     },
     {
+      "id": "gcloud",
+      "required": false,
+      "detect": ["gcloud", "--version"],
+      "verify": ["gcloud", "auth", "list"],
+      "purpose": "選用 Google Workspace 遠端 MCP 的 Google Cloud 專案、API 與 MCP API 設定。"
+    },
+    {
       "id": "officecli",
       "required": false,
       "detect": ["officecli", "--version"],
