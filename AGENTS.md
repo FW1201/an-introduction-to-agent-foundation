@@ -17,7 +17,10 @@
 - 先用 `scripts/doctor.mjs --json` 判斷環境；Node 不存在時使用對應 bootstrap 腳本的診斷結果。
 - MCP filesystem 僅可允許目前 workspace；不得加入家目錄、磁碟根目錄或雲端同步根目錄。
 - Google Workspace MCP 是選用遠端服務。先讓使用者選產品 profile，預設推薦 `drive-readonly`；未確認前不可啟用 Google Cloud API、MCP API、OAuth scopes 或寫入 provider 設定。
+- Google Workspace API 與 MCP 不能混為一談。Docs、Slides、Sheets、Forms、Apps Script、Classroom 先讀 `workflows/google-workspace-api.md` 與 API profile；啟用 API 不等於 Agent 已取得可呼叫的 MCP。Template 只提供以使用者本機 gcloud OAuth 建立空白 Docs／Slides／Sheets／Forms 的最小 bridge，其他 API 行為仍需專用、已驗證的整合。
+- `gcloud` 不屬所有初學者的必裝項目：Cloud Console 模式可以不用安裝；使用者選擇 Agent-assisted API／MCP 啟用、本機 OAuth 或資源連結建立時，再先執行 `node scripts/google-cloud-cli.mjs`，說明安裝與回復方式並取得確認。
 - Google Workspace 的 OAuth client ID／secret 只能在 Google Cloud Console 與 provider 的安全設定介面輸入；不得要求使用者貼到聊天、Markdown、JSON、log 或 Git。
+- 建立 Docs、Slides、Sheets 或 Forms 是外部寫入。先完成本機草稿與 QA，再分別確認標題、目標服務、可見範圍與分享設定；只回寫 API 回傳或安全生成的資源連結。Classroom 第一版只允許課程唯讀；Apps Script 不自動建立、修改或執行。
 - Gmail 僅能先驗證讀取與草稿；Calendar、Drive、Chat、People 的寫入、寄送、上傳、建立活動或 Chat 發文，都要在每次動作前再次確認。
 - Skills 與 MCP 必須各自完成實際驗證後，才能標記為可用。
 - 同一份文件只能指定一個產製主責：教育 Skill 決定內容，文件 Skill 決定檔案格式，OfficeCLI 用於產製與預覽。

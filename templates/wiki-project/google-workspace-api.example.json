@@ -1,0 +1,14 @@
+{
+  "selectedProfile": "docs-create",
+  "enableMode": "console",
+  "projectId": "YOUR_PROJECT_ID",
+  "oauth": {
+    "clientId": "SET_IN_PROVIDER_OR_LOCAL_SECURE_STORE",
+    "clientSecret": "DO_NOT_STORE_HERE"
+  },
+  "safety": [
+    "Use Cloud Console mode unless the user explicitly asks for Agent-assisted gcloud commands.",
+    "Do not save a real client secret, access token, refresh token, student data, or produced document content in this file.",
+    "Create a resource only after its local draft, target service, title, visibility, and sharing decision are confirmed."
+  ]
+}

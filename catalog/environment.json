@@ -47,7 +47,8 @@
       "required": false,
       "detect": ["gcloud", "--version"],
       "verify": ["gcloud", "auth", "list"],
-      "purpose": "選用 Google Workspace 遠端 MCP 的 Google Cloud 專案、API 與 MCP API 設定。"
+      "purpose": "Cloud Console 模式不需要；需要 Agent-assisted Google Workspace MCP／API 啟用、本機 OAuth 或資源連結建立時建議安裝。",
+      "official_install_guide": "https://docs.cloud.google.com/sdk/docs/install-sdk"
     },
     {
       "id": "officecli",

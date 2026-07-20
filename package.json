@@ -1,6 +1,6 @@
 {
   "name": "an-introduction-to-agent-foundation",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "Agent-readable, education-focused foundation template for environment, wiki, MCP, skills, and verified workflows.",
   "type": "module",
@@ -9,9 +9,11 @@
   },
   "scripts": {
     "doctor": "node scripts/doctor.mjs",
+    "google-cloud:check": "node scripts/google-cloud-cli.mjs",
+    "google-workspace:api": "node scripts/google-workspace-api.mjs",
     "google-workspace:mcp": "node scripts/google-workspace-mcp.mjs",
     "init:workspace": "node scripts/init-workspace.mjs",
     "validate": "node scripts/validate-repository.mjs",
-    "test": "npm run validate && node scripts/doctor.mjs --json --quiet && node scripts/verify-mcp.mjs --config templates/wiki-project/.mcp.example.json --workspace . && node scripts/verify-skill.mjs --id tw-edu-exam-generator && node scripts/verify-google-workspace-mcp.mjs --profile drive-readonly --config templates/wiki-project/google-workspace-mcp.example.json && node scripts/verify-pages.mjs --workflow .github/workflows/pages.yml --site site"
+    "test": "npm run validate && node scripts/doctor.mjs --json --quiet && node scripts/verify-mcp.mjs --config templates/wiki-project/.mcp.example.json --workspace . && node scripts/verify-skill.mjs --id tw-edu-exam-generator && node scripts/verify-google-workspace-mcp.mjs --profile drive-readonly --config templates/wiki-project/google-workspace-mcp.example.json && node scripts/verify-google-workspace-api.mjs && node scripts/verify-pages.mjs --workflow .github/workflows/pages.yml --site site"
   }
 }

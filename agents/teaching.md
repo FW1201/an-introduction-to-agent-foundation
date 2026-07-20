@@ -17,7 +17,7 @@
 
 - Skills：`tw-edu-lesson-plan-108`、`tw-edu-slides-creator`、`tw-edu-exam-generator`、`tw-edu-worksheet-creator`、`tw-edu-rubric-designer`、`tw-edu-mini-app`。
 - 文件：Claude Code 可選用 Anthropic Document Skills；OfficeCLI 可負責渲染預覽。
-- 工具：filesystem；迷你專案才使用 git／gh／Pages。
+- 工具：filesystem；迷你專案才使用 git／gh／Pages。若需要 Google 文件連結，選用 `docs-create`、`slides-create`、`sheets-create` 或 `forms-create` API profile；先完成本機草稿與教師確認，再建立資源與回寫連結。
 
 ## 品質閘門
 

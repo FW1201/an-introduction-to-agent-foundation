@@ -2,7 +2,7 @@
 set -u
 
 echo "Agent Foundation bootstrap check (macOS)"
-for tool in brew git node npm npx gh officecli python3; do
+for tool in brew git node npm npx gh gcloud officecli python3; do
   if command -v "$tool" >/dev/null 2>&1; then
     printf '✓ %s: ' "$tool"
     "$tool" --version 2>/dev/null | head -n 1 || true

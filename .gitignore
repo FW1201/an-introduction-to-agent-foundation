@@ -9,6 +9,7 @@ node_modules/
 *.token
 .agent-foundation/backups/
 google-workspace-mcp.local.json
+google-workspace-api.local.json
 templates/wiki-project/raw/private/
 raw/private/
 logs/private/

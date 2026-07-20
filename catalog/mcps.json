@@ -41,11 +41,25 @@
       "stage": 3,
       "purpose": "依使用者選擇連接 Gmail、Drive、Calendar、Chat 或 People 的官方遠端 MCP。",
       "source": "Google Workspace remote MCP servers",
-      "requires": ["gcloud", "Google Cloud project", "OAuth 2.0 client"],
+      "requires": ["Google Cloud project", "OAuth 2.0 client"],
+      "optional_agent_assisted_requirement": "gcloud is recommended for CLI enablement; users may instead use the Google Cloud Console.",
       "access": "product-specific OAuth scopes; choose one least-privilege profile at a time",
       "verification": "Complete provider OAuth in its secure UI, then make one profile-appropriate read-only call before enabling any write action.",
       "rollback": "Remove the provider connector, revoke OAuth consent if required, and disable unused Google Cloud APIs after confirming no other workload needs them.",
       "catalog": "catalog/google-workspace-profiles.json"
+    },
+    {
+      "id": "google-workspace-api",
+      "stage": 4,
+      "kind": "API integration, not a remote MCP",
+      "purpose": "為 Docs、Slides、Sheets、Forms、Apps Script 與 Classroom 提供最小 API profile、Cloud Console／gcloud 啟用引導，以及產出資源連結的回寫規則。",
+      "source": "Google Workspace APIs",
+      "requires": ["Google Cloud project", "profile-appropriate OAuth authorization"],
+      "optional_agent_assisted_requirement": "gcloud is recommended only for repeatable CLI enablement and local OAuth; Console mode remains available.",
+      "access": "one API profile at a time; resource creation, sharing, publication, data collection, Classroom writes, and Script execution are separate confirmations",
+      "verification": "Run the profile dry run, enable one API through the confirmed path, and perform only the stated minimum verification.",
+      "rollback": "Disable only APIs that no other workload uses, revoke unneeded OAuth consent, and remove ignored local configuration after user confirmation.",
+      "catalog": "catalog/google-workspace-api-profiles.json"
     }
   ]
 }
