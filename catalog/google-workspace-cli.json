@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "id": "gws",
+  "name": "Google Workspace CLI",
+  "source_repository": "https://github.com/googleworkspace/cli",
+  "package": "@googleworkspace/cli",
+  "executable": "gws",
+  "compatibility_snapshot": {
+    "checked_at": "2026-07-23",
+    "upstream_commit": "a3768d0e82ad83cca2da97724e46bea4ff0e6dbd",
+    "package_version": "0.22.5",
+    "status": "pre-1.0 and not an officially supported Google product; verify help and schema before each new workflow"
+  },
+  "install": {
+    "requires_confirmation": true,
+    "prerequisites": ["Node.js 18+", "Google account", "Google Cloud project for OAuth credentials"],
+    "command": ["npm", "install", "-g", "@googleworkspace/cli@0.22.5"],
+    "verify": ["gws", "--version"],
+    "uninstall": ["npm", "uninstall", "-g", "@googleworkspace/cli"]
+  },
+  "authentication": {
+    "mode": "manual OAuth through Google Cloud Console",
+    "oauth_client_type": "Desktop app",
+    "client_file": "~/.config/gws/client_secret.json",
+    "first_login": ["gws", "auth", "login", "--readonly", "-s", "drive"],
+    "status": ["gws", "auth", "status"],
+    "logout": ["gws", "auth", "logout"],
+    "secrets_in_chat_or_repository": false
+  },
+  "first_verification": {
+    "access": "read-only",
+    "command": [
+      "gws",
+      "drive",
+      "files",
+      "list",
+      "--params",
+      "{\"pageSize\":1,\"fields\":\"files(id,mimeType)\"}"
+    ],
+    "success": "Valid JSON is returned with at most one file ID and MIME type; raw output is not copied into chat, logs, or the Wiki."
+  },
+  "service_starters": [
+    {
+      "id": "drive",
+      "first_access": "read-only",
+      "login": ["gws", "auth", "login", "--readonly", "-s", "drive"],
+      "help": ["gws", "drive", "--help"]
+    },
+    {
+      "id": "gmail",
+      "first_access": "read-only",
+      "login": ["gws", "auth", "login", "--readonly", "-s", "gmail"],
+      "help": ["gws", "gmail", "--help"]
+    },
+    {
+      "id": "calendar",
+      "first_access": "read-only",
+      "login": ["gws", "auth", "login", "--readonly", "-s", "calendar"],
+      "help": ["gws", "calendar", "--help"]
+    },
+    {
+      "id": "docs",
+      "first_access": "read-only for an approved document ID; creation follows the write gate",
+      "help": ["gws", "docs", "--help"]
+    },
+    {
+      "id": "slides",
+      "first_access": "read-only for an approved presentation ID; creation follows the write gate",
+      "help": ["gws", "slides", "--help"]
+    },
+    {
+      "id": "sheets",
+      "first_access": "read-only for an approved spreadsheet ID; creation follows the write gate",
+      "help": ["gws", "sheets", "--help"]
+    },
+    {
+      "id": "forms",
+      "first_access": "read-only for an approved form ID; creation follows the write gate",
+      "help": ["gws", "forms", "--help"]
+    }
+  ],
+  "write_scope_upgrades": [
+    {
+      "operation": "create or edit a document",
+      "service": "docs",
+      "scope": "https://www.googleapis.com/auth/documents"
+    },
+    {
+      "operation": "create or edit a presentation",
+      "service": "slides",
+      "scope": "https://www.googleapis.com/auth/presentations"
+    },
+    {
+      "operation": "create or edit a spreadsheet",
+      "service": "sheets",
+      "scope": "https://www.googleapis.com/auth/spreadsheets"
+    },
+    {
+      "operation": "create or edit a form",
+      "service": "forms",
+      "scope": "https://www.googleapis.com/auth/forms.body"
+    },
+    {
+      "operation": "create a Gmail draft",
+      "service": "gmail",
+      "scope": "https://www.googleapis.com/auth/gmail.compose"
+    },
+    {
+      "operation": "create or edit a calendar event",
+      "service": "calendar",
+      "scope": "https://www.googleapis.com/auth/calendar.events"
+    },
+    {
+      "operation": "create or upload a user-selected Drive file",
+      "service": "drive",
+      "scope": "https://www.googleapis.com/auth/drive.file"
+    }
+  ],
+  "write_policy": {
+    "local_draft_and_qa_first": true,
+    "inspect_schema_before_use": true,
+    "dry_run_before_write": true,
+    "explicit_confirmation_per_write": true,
+    "semantic_read_back_required": true,
+    "sending_sharing_publishing_and_deleting_are_separate_confirmations": true,
+    "raw_command_output_in_chat_logs_or_wiki": false,
+    "credential_export_allowed": false
+  }
+}

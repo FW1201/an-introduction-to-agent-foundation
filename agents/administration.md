@@ -15,7 +15,7 @@
 ## 建議能力
 
 - Skills：`tw-edu-school-document`、`tw-edu-meeting-facilitator`。
-- 工具：filesystem；選用 Google Workspace `drive-readonly`、`calendar-planning` 或 `gmail-draft` profile。需要產出 Google 文件時可選 `docs-create` 或 `sheets-create` API profile；Drive、Calendar、Gmail 與文件建立均在行政確認後使用，且不得自動分享或對外發布。
+- 工具：filesystem；需要 Drive、Calendar、Gmail、Docs 或 Sheets 時由協調 Agent 依 `workflows/google-workspace-cli.md` 使用 `gws`。先完成單一服務唯讀驗證；建立、更新、分享、寄送與發布均需行政分次確認並語意讀回。
 
 ## 品質閘門
 

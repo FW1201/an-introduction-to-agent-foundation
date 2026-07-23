@@ -1,0 +1,14 @@
+{
+  "tool": "gws",
+  "source": "https://github.com/googleworkspace/cli",
+  "selectedService": "drive",
+  "authorization": "read-only",
+  "firstVerification": "gws drive files list --params '{\"pageSize\":1,\"fields\":\"files(id,mimeType)\"}'",
+  "safety": [
+    "Keep OAuth client files, credentials, tokens, and personal data outside this repository and Wiki.",
+    "Inspect help and schema before a new command.",
+    "Use dry run and obtain explicit confirmation before each external write.",
+    "Do not copy raw command output or dry-run request bodies into chat, logs, or the Wiki.",
+    "After a write, read the resource back and record only a de-identified result, safe link, and QA status."
+  ]
+}

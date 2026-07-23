@@ -19,7 +19,7 @@
       "minimum_version": 18,
       "detect": ["node", "--version"],
       "verify": ["node", "--version"],
-      "purpose": "執行 npm、npx、診斷腳本與部分 MCP。"
+      "purpose": "執行 npm、npx、診斷腳本與專案工作流。"
     },
     {
       "id": "npm",
@@ -33,7 +33,7 @@
       "required": true,
       "detect": ["npx", "--version"],
       "verify": ["npx", "--version"],
-      "purpose": "啟動不需全域安裝的 MCP 或工具。"
+      "purpose": "啟動不需全域安裝的 MCP、Skills 安裝器或其他工具。"
     },
     {
       "id": "gh",
@@ -43,12 +43,14 @@
       "purpose": "建立 GitHub repository、推送與 GitHub Pages 部署；在發布階段才登入。"
     },
     {
-      "id": "gcloud",
+      "id": "gws",
       "required": false,
-      "detect": ["gcloud", "--version"],
-      "verify": ["gcloud", "auth", "list"],
-      "purpose": "Cloud Console 模式不需要；需要 Agent-assisted Google Workspace MCP／API 啟用、本機 OAuth 或資源連結建立時建議安裝。",
-      "official_install_guide": "https://docs.cloud.google.com/sdk/docs/install-sdk"
+      "detect": ["gws", "--version"],
+      "verify": ["gws", "--version"],
+      "purpose": "選用的單一 Google Workspace CLI；以 JSON 供 Agent 查詢或操作 Drive、Gmail、Calendar、Docs、Sheets 等服務。",
+      "source": "https://github.com/googleworkspace/cli",
+      "install": ["npm", "install", "-g", "@googleworkspace/cli@0.22.5"],
+      "workflow": "workflows/google-workspace-cli.md"
     },
     {
       "id": "officecli",

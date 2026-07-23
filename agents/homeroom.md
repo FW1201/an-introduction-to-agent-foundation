@@ -15,7 +15,7 @@
 ## 建議能力
 
 - Skills：`tw-edu-classroom-culture`、`tw-edu-parent-communication`。
-- 工具：filesystem；選用 Google Workspace `gmail-draft` 或 `calendar-planning` profile。Gmail／Calendar 僅在使用者另行確認後讀取或建立草稿。
+- 工具：filesystem；需要 Gmail 或 Calendar 時由協調 Agent 選用 `gws`。首次授權只允許單一服務唯讀；郵件草稿、寄送與建立日曆活動都是分開的確認點。
 
 ## 品質閘門
 

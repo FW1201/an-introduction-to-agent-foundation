@@ -33,7 +33,7 @@ const tools = [
   ["npm", ["--version"]],
   ["npx", ["--version"]],
   ["gh", ["--version"]],
-  ["gcloud", ["--version"]],
+  ["gws", ["--version"]],
   ["officecli", ["--version"]],
   ["python3", ["--version"]]
 ].map(([command, commandArgs]) => probe(command, commandArgs));
@@ -75,6 +75,7 @@ for (const required of ["git", "node", "npm", "npx"]) {
 }
 if (!workspaceState.agentsFile) report.next_actions.push("Open the Agent Foundation template root so AGENTS.md is available.");
 if (gh?.status === "missing") report.next_actions.push("Install gh only when you are ready to create a GitHub repository or deploy Pages.");
+if (tools.find((tool) => tool.command === "gws")?.status === "missing") report.next_actions.push("gws is optional; offer googleworkspace/cli only when the task needs Google Workspace.");
 if (tools.find((tool) => tool.command === "officecli")?.status === "missing") report.next_actions.push("OfficeCLI is optional; offer it before a DOCX/PPTX production workflow.");
 
 if (jsonMode) {

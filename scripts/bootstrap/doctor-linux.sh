@@ -5,7 +5,7 @@ echo "Agent Foundation bootstrap check (Linux)"
 for manager in apt-get dnf pacman; do
   command -v "$manager" >/dev/null 2>&1 && echo "✓ package manager: $manager"
 done
-for tool in git node npm npx gh gcloud officecli python3; do
+for tool in git node npm npx gh gws officecli python3; do
   if command -v "$tool" >/dev/null 2>&1; then
     printf '✓ %s: ' "$tool"
     "$tool" --version 2>/dev/null | head -n 1 || true
